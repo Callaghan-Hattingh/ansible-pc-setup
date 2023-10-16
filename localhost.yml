@@ -1,0 +1,99 @@
+---
+
+- hosts: localhost
+  become: true
+  tasks:
+    - name: Update apt index
+      apt:
+        update_cache: yes
+
+    - name: Install aptitude
+      apt:
+        name: aptitude
+        state: latest
+        update_cache: true
+
+    - name: Install required system packages
+      apt:
+        pkg:
+          - apt-transport-https
+          - ca-certificates
+          - curl
+          - gnupg-agent
+          - software-properties-common
+          - jq
+          - wget
+          - awscli
+          - postgresql
+          - postgresql-contrib
+          - git
+        state: latest
+        update_cache: true
+
+    - name: Install postman
+      community.general.snap:
+        name: postman
+        classic: yes
+
+    - name: Install docker
+      community.general.snap:
+        name: docker
+        classic: yes
+
+    - name: Install pycharm-professional
+      community.general.snap:
+        name: pycharm-professional
+        classic: yes
+
+    - name: Install go
+      community.general.snap:
+        name: go
+        classic: yes
+
+    - name: Install helm
+      community.general.snap:
+        name: helm
+        classic: yes
+
+    - name: Install code
+      community.general.snap:
+        name: code
+        classic: yes
+
+    - name: Install helix
+      community.general.snap:
+        name: helix
+        classic: yes
+
+    - name: Install k9s
+      community.general.snap:
+        name: k9s
+        classic: yes
+
+    - name: Install SMPlayer
+      community.general.snap:
+        name: smplayer
+        classic: yes
+
+    - name: create docker group
+      command: addgroup --system docker
+      
+    - name: Adding users to group docker
+      command: adduser $USER docker
+
+    - name: Create docker directory
+      file:
+        path: /home/callaghan/.docker/cli-plugins
+        state: directory
+      
+    - name: Download docker-compose
+      ansible.builtin.get_url:
+        url: 'https://github.com/docker/compose/releases/download/v2.22.0/docker-compose-linux-x86_64'
+        dest: /home/callaghan/.docker/cli-plugins/docker-compose
+
+    - name: chmod docker-compose
+      file:
+        dest: /home/callaghan/.docker/cli-plugins/docker-compose
+        mode: +x
+
+
