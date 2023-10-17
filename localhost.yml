@@ -42,6 +42,12 @@
 #        name: flameshot
 #        classic: yes
 
+    - name: Install kubectl
+      community.general.snap:
+        name: kubectl
+        classic: yes
+        channel: 1.27/stable
+
     - name: Install postman
       community.general.snap:
         name: postman
