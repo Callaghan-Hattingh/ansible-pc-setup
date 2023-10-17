@@ -27,12 +27,20 @@
           - postgresql
           - postgresql-contrib
           - git
-          - zsh
+          - zsh # https://phoenixnap.com/kb/install-zsh-ubuntu
+          - vim-nox # https://www.cyberciti.biz/faq/howto-install-vim-on-ubuntu-linux/
+          - openconnect
+          - flameshot
         state: latest
         update_cache: true
 
 #    - name: set zsh as default shell
 #      command: chsh -s $(which zsh)
+
+#    - name: Install flameshot
+#      community.general.snap:
+#        name: flameshot
+#        classic: yes
 
     - name: Install postman
       community.general.snap:
