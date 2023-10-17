@@ -27,8 +27,12 @@
           - postgresql
           - postgresql-contrib
           - git
+          - zsh
         state: latest
         update_cache: true
+
+#    - name: set zsh as default shell
+#      command: chsh -s $(which zsh)
 
     - name: Install postman
       community.general.snap:
@@ -75,11 +79,19 @@
         name: smplayer
         classic: yes
 
+    - name: Install sqlitebrowser
+      community.general.snap:
+        name: sqlitebrowser
+        classic: yes
+
     - name: create docker group
       command: addgroup --system docker
       
     - name: Adding users to group docker
       command: adduser $USER docker
+
+    - name: Adding user to group docker again
+      command: usermod -aG docker $USER
 
     - name: Create docker directory
       file:
