@@ -31,6 +31,9 @@
           - vim-nox # https://www.cyberciti.biz/faq/howto-install-vim-on-ubuntu-linux/
           - openconnect
           - flameshot
+          - build-essential
+          - procps
+          - file
         state: latest
         update_cache: true
 
@@ -53,10 +56,10 @@
         name: postman
         classic: yes
 
-    - name: Install docker
-      community.general.snap:
-        name: docker
-        classic: yes
+#    - name: Install docker
+#      community.general.snap:
+#        name: docker
+#        classic: yes
 
     - name: Install pycharm-professional
       community.general.snap:
@@ -97,6 +100,24 @@
       community.general.snap:
         name: sqlitebrowser
         classic: yes
+
+    - name: Add Docker GPG apt Key
+      apt_key:
+        url: https://download.docker.com/linux/ubuntu/gpg
+        state: present
+
+    - name: Add Docker Repository
+      apt_repository:
+        repo: deb https://download.docker.com/linux/ubuntu lunar stable
+        state: present
+
+    - name: Update apt and install docker-ce
+      apt:
+        name:
+          - docker-ce
+          - docker-ce-cli
+        state: latest
+        update_cache: true
 
     - name: create docker group
       command: addgroup --system docker
