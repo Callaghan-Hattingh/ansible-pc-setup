@@ -11,7 +11,11 @@
       apt:
         name: aptitude
         state: latest
-        update_cache: true
+#        update_cache: true
+#    - name: Install kubectx
+#      apt:
+#        name: kubectx
+#        state: latest
 
     - name: Install required system packages
       apt:
@@ -56,7 +60,12 @@
         name: postman
         classic: yes
 
-#    - name: Install docker
+    - name: Install kubectx
+      community.general.snap:
+        name: kubectx
+        classic: yes
+
+#    - name: Install docker # errors do not use
 #      community.general.snap:
 #        name: docker
 #        classic: yes
