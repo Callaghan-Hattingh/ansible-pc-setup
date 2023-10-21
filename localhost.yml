@@ -41,14 +41,6 @@
         state: latest
         update_cache: true
 
-#    - name: set zsh as default shell
-#      command: chsh -s $(which zsh)
-
-#    - name: Install flameshot
-#      community.general.snap:
-#        name: flameshot
-#        classic: yes
-
     - name: Install kubectl
       community.general.snap:
         name: kubectl
