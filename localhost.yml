@@ -38,6 +38,10 @@
           - build-essential
           - procps
           - file
+          - lsd
+          - libssl-dev
+          - pkg-config
+          - libsqlite3-dev
         state: latest
         update_cache: true
 
