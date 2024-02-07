@@ -27,11 +27,11 @@
           - software-properties-common
           - jq
           - wget
-          - awscli
+#          - awscli
           - postgresql
           - postgresql-contrib
           - git
-          - zsh # https://phoenixnap.com/kb/install-zsh-ubuntu
+#          - zsh # https://phoenixnap.com/kb/install-zsh-ubuntu
           - vim-nox # https://www.cyberciti.biz/faq/howto-install-vim-on-ubuntu-linux/
           - openconnect
           - build-essential
@@ -54,16 +54,10 @@
         classic: yes
         channel: 1.27/stable
 
-    # next step is to run -> gcloud init
-    - name: Install google-cloud-cli
-      community.general.snap:
-        name: google-cloud-cli
-        classic: yes
-
-    - name: Install postman
-      community.general.snap:
-        name: postman
-        classic: yes
+#    - name: Install postman
+#      community.general.snap:
+#        name: postman
+#        classic: yes
 
     - name: Install kubectx
       community.general.snap:
@@ -80,10 +74,10 @@
 #        name: pycharm-professional
 #        classic: yes
 
-    - name: Install go
-      community.general.snap:
-        name: go
-        classic: yes
+#    - name: Install go
+#      community.general.snap:
+#        name: go
+#        classic: yes
 
     - name: Install helm
       community.general.snap:
@@ -95,25 +89,20 @@
         name: code
         classic: yes
 
-    - name: Install helix
-      community.general.snap:
-        name: helix
-        classic: yes
-
     - name: Install k9s
       community.general.snap:
         name: k9s
         classic: yes
 
-    - name: Install SMPlayer
-      community.general.snap:
-        name: smplayer
-        classic: yes
+#    - name: Install SMPlayer
+#      community.general.snap:
+#        name: smplayer
+#        classic: yes
 
-    - name: Install sqlitebrowser
-      community.general.snap:
-        name: sqlitebrowser
-        classic: yes
+#    - name: Install sqlitebrowser
+#      community.general.snap:
+#        name: sqlitebrowser
+#        classic: yes
 
     - name: Add Docker GPG apt Key
       apt_key:
@@ -156,22 +145,3 @@
       file:
         dest: /home/callaghan/.docker/cli-plugins/docker-compose
         mode: +x
-
-#    - name: upgrade the virtualenv package
-#      pip:
-#        name: virtualenv
-#        state: latest
-#    - name: upgrade the pip package
-#      pip:
-#        name: pip
-#        state: latest
-#
-#    - name: Install bottle virtualenv package
-#      ansible.builtin.pip:
-#        name: virtualenv
-#
-#    - name: Install bottle virtualenvwrapper package
-#      ansible.builtin.pip:
-#        name: virtualenvwrapper
-
-
