@@ -109,37 +109,3 @@
       file:
         dest: /home/callaghan/.docker/cli-plugins/docker-compose
         mode: +x
-
-    - name: Check if Homebrew is installed
-      ansible.builtin.stat:
-        path: /usr/local/Homebrew/bin/brew
-      register: brew_installed
-
-    - name: Install Homebrew
-      ansible.builtin.shell: /bin/bash -c "$(curl -fsSL https://raw.githubusercontent.com/Homebrew/install/HEAD/install.sh)"
-      when: not brew_installed.stat.exists
-
-    - name: Install kind
-      community.general.homebrew:
-        name: kind
-        state: present
-
-    - name: Install cf8
-      community.general.homebrew:
-        name: cloudfoundry/tap/cf-cli@8
-        state: present
-
-    - name: Install kbld
-      community.general.homebrew:
-        name: cloudfoundry/tap/cf-cli@8
-        state: present
-
-    - name: Tap carvel-dev/carvel
-      community.general.homebrew_tap:
-        name: carvel-dev/carvel
-        state: present
-
-    - name: Install kbld
-      community.general.homebrew:
-        name: kbld
-        state: present
