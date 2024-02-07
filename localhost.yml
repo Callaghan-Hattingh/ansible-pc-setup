@@ -11,11 +11,6 @@
       apt:
         name: aptitude
         state: latest
-#        update_cache: true
-#    - name: Install kubectx
-#      apt:
-#        name: kubectx
-#        state: latest
 
     - name: Install required system packages
       apt:
@@ -37,7 +32,6 @@
           - build-essential
           - procps
           - file
-          - lsd
           - libssl-dev
           - pkg-config
           - libsqlite3-dev
@@ -54,30 +48,10 @@
         classic: yes
         channel: 1.27/stable
 
-#    - name: Install postman
-#      community.general.snap:
-#        name: postman
-#        classic: yes
-
     - name: Install kubectx
       community.general.snap:
         name: kubectx
         classic: yes
-
-#    - name: Install docker # errors do not use
-#      community.general.snap:
-#        name: docker
-#        classic: yes
-
-#    - name: Install pycharm-professional
-#      community.general.snap:
-#        name: pycharm-professional
-#        classic: yes
-
-#    - name: Install go
-#      community.general.snap:
-#        name: go
-#        classic: yes
 
     - name: Install helm
       community.general.snap:
@@ -93,16 +67,6 @@
       community.general.snap:
         name: k9s
         classic: yes
-
-#    - name: Install SMPlayer
-#      community.general.snap:
-#        name: smplayer
-#        classic: yes
-
-#    - name: Install sqlitebrowser
-#      community.general.snap:
-#        name: sqlitebrowser
-#        classic: yes
 
     - name: Add Docker GPG apt Key
       apt_key:
@@ -145,3 +109,31 @@
       file:
         dest: /home/callaghan/.docker/cli-plugins/docker-compose
         mode: +x
+
+    - name: Install Homebrew
+      command: $(curl -fsSL https://raw.githubusercontent.com/Homebrew/install/HEAD/install.sh)
+
+    - name: Install kind
+      community.general.homebrew:
+        name: kind
+        state: present
+
+    - name: Install cf8
+      community.general.homebrew:
+        name: cloudfoundry/tap/cf-cli@8
+        state: present
+
+    - name: Install kbld
+      community.general.homebrew:
+        name: cloudfoundry/tap/cf-cli@8
+        state: present
+
+    - name: Tap carvel-dev/carvel
+      community.general.homebrew_tap:
+        name: carvel-dev/carvel
+        state: present
+
+    - name: Install kbld
+      community.general.homebrew:
+        name: kbld
+        state: present
