@@ -34,7 +34,6 @@
           - zsh # https://phoenixnap.com/kb/install-zsh-ubuntu
           - vim-nox # https://www.cyberciti.biz/faq/howto-install-vim-on-ubuntu-linux/
           - openconnect
-          - flameshot
           - build-essential
           - procps
           - file
@@ -42,6 +41,10 @@
           - libssl-dev
           - pkg-config
           - libsqlite3-dev
+          - python3-pip
+          - xclip
+          - cloc
+          - ripgrep # grep for in parent folder
         state: latest
         update_cache: true
 
@@ -72,10 +75,10 @@
 #        name: docker
 #        classic: yes
 
-    - name: Install pycharm-professional
-      community.general.snap:
-        name: pycharm-professional
-        classic: yes
+#    - name: Install pycharm-professional
+#      community.general.snap:
+#        name: pycharm-professional
+#        classic: yes
 
     - name: Install go
       community.general.snap:
@@ -153,5 +156,22 @@
       file:
         dest: /home/callaghan/.docker/cli-plugins/docker-compose
         mode: +x
+
+#    - name: upgrade the virtualenv package
+#      pip:
+#        name: virtualenv
+#        state: latest
+#    - name: upgrade the pip package
+#      pip:
+#        name: pip
+#        state: latest
+#
+#    - name: Install bottle virtualenv package
+#      ansible.builtin.pip:
+#        name: virtualenv
+#
+#    - name: Install bottle virtualenvwrapper package
+#      ansible.builtin.pip:
+#        name: virtualenvwrapper
 
 
