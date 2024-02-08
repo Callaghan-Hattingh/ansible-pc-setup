@@ -1,5 +1,6 @@
 ---
-
+# Add below to .bashrc/zshrc
+# eval "$(/home/linuxbrew/.linuxbrew/bin/brew shellenv)"
 - hosts: localhost
   tasks:
     - name: Check if Homebrew is installed
