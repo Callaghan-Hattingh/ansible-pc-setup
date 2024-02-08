@@ -53,6 +53,11 @@
         name: kubectx
         classic: yes
 
+    - name: Install go
+      community.general.snap:
+        name: go
+        classic: yes
+
     - name: Install helm
       community.general.snap:
         name: helm
