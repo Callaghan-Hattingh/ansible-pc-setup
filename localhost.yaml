@@ -97,15 +97,15 @@
 
     - name: Create docker directory
       file:
-        path: /home/callaghan/.docker/cli-plugins
+        path: /home/$USER/.docker/cli-plugins
         state: directory
       
     - name: Download docker-compose
       ansible.builtin.get_url:
         url: 'https://github.com/docker/compose/releases/download/v2.22.0/docker-compose-linux-x86_64'
-        dest: /home/callaghan/.docker/cli-plugins/docker-compose
+        dest: /home/$USER/.docker/cli-plugins/docker-compose
 
     - name: chmod docker-compose
       file:
-        dest: /home/callaghan/.docker/cli-plugins/docker-compose
+        dest: /home/$USER/.docker/cli-plugins/docker-compose
         mode: +x

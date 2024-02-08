@@ -22,11 +22,6 @@
         name: cloudfoundry/tap/cf-cli@8
         state: present
 
-    - name: Install kbld
-      community.general.homebrew:
-        name: cloudfoundry/tap/cf-cli@8
-        state: present
-
     - name: Tap carvel-dev/carvel
       community.general.homebrew_tap:
         name: carvel-dev/carvel
